@@ -1,0 +1,12 @@
+export const PRODUCE = 'produce';
+export const MEAT = 'meat';
+export const SEAFOOD = 'seafood';
+export const DAIRY = 'dairy';
+export const BEVERAGES = 'beverages';
+export const FROZEN = 'frozen';
+export const RICE_GRAINS_PASTA_BEANS = 'rice/grains/pasta/beans';
+export const BREAKFAST_CEREAL = 'breakfast/cereal';
+export const BAKING_COOKING_NEEDS = 'baking/cooking';
+export const SOUPS_CANNED_GOODS = 'soups/canned';
+export const CONDIMENTS_SAUCES = 'condiments/sauces';
+export const BREAD_BAKERY = 'bread/bakery';
