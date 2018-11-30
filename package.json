@@ -1,25 +1,24 @@
 {
   "name": "chefs-pantry",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+  "version": "1.0.0",
+  "description": "Test app for La Belle Assiette",
+  "main": "index.js",
+  "engines": {
+    "node": "10.8.0",
+    "npm": "6.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node index.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "author": "Jack Klein",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.14"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
+  }
 }
