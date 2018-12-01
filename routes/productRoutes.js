@@ -6,13 +6,15 @@ module.exports = app => {
   app.route('/api/product')
     // await axios.post('/api/product', product)
     .post(async (req, res) => {
-      const { category, name, unit, count } = req.body;
+      const { category, name, container, metric, count, notes } = req.body;
       
       const product = new Product({
         category,
         name,
-        unit,
-        count
+        container,
+        metric,
+        count,
+        notes
       });
 
       try {
