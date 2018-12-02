@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
+
+import MUIDataTableHead from './MUIDataTableHead';
+import MUIDataTableBody from './MUIDataTableBody'
 
 class MUIDataTable extends Component{
   constructor(props){
@@ -35,86 +31,9 @@ class MUIDataTable extends Component{
     )
   }
 
-  renderTableHead(){
-    return(
-      this.props.columns.map(column => {
-        return (
-          <TableCell 
-            key={column.title}
-            numeric={column.numeric}
-          >
-            {column.title}
-          </TableCell>
-        )
-      })
-    )
-  }
-
-  renderActionsCell(){
-    if(this.props.canEdit || this.props.canDelete){
-      return(
-        <TableCell></TableCell>
-      )
-    }
-  }
-
-  renderTableBody() {
-    return(
-      this.props.data.map((row, index) => {
-        // render normal row
-        if(this.state.index !== index){
-          return(
-            this.renderNormalRow(row, index)
-          )
-        }
-        // render edit row
-      })
-    );
-  }
-
-  renderNormalRow(row, index){
-    return (
-      <TableRow key={row._id}>
-        {this.props.columns.map(column => {
-          return(
-            <TableCell key={column.cell} numeric={column.numeric}>
-              {row[column.cell]}
-            </TableCell>
-          )
-        })}
-        {this.renderActionButtons(row, index)}
-      </TableRow>
-    );
-  }
-
-  renderActionButtons(row, index){
-    if(this.props.canEdit || this.props.canDelete){
-      return(
-        <TableCell>
-          <div style={{display: 'flex'}}>
-            {this.props.canEdit ? 
-              <IconButton
-                onClick={() => this.onEdit(index)}
-              >
-                <EditIcon />
-              </IconButton> 
-              : null}
-
-            {this.props.canDelete ? 
-              <IconButton
-                onClick={() => this.props.onDelete(index)}
-              >
-                <DeleteIcon />
-              </IconButton>
-              : null}
-          </div>
-        </TableCell>
-      );
-    }
-  }
-
   onEdit(index){
-    this.setState({ index })
+    console.log(index);
+    //this.setState({ index })
   }
 
   render(){
@@ -122,15 +41,12 @@ class MUIDataTable extends Component{
       <Paper>
         {this.renderTableTitle()}
         <Table>
-          <TableHead>
-            <TableRow>
-              {this.renderTableHead()}
-              {this.renderActionsCell()}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-              {this.renderTableBody()}
-          </TableBody>
+          <MUIDataTableHead {...this.props} />
+          <MUIDataTableBody 
+            editIndex={this.state.index}
+            onEdit={(index) => this.onEdit(index)}
+            {...this.props}
+          />
         </Table>
       </Paper>
     )

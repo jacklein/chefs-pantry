@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { DELETE } from '../context';
-import { showModal } from '../actions';
+import { showModal, submitProduct } from '../actions';
 import MUIDataTable from './datatable/MUIDataTable';
+import ProductForm from './products/ProductForm';
 
 const styles = theme => ({
   content: {
@@ -21,7 +22,11 @@ const columns = [{ title: 'Product', cell: 'name', numeric: false },
 
 class CategoryDisplay extends Component{
   
-  onDelete(index){
+  onSubmitProduct(props){
+    this.props.submitProduct({ category: this.props.currentTable.category, ...props });
+  }
+
+  onDeleteProduct(index){
     this.props.showModal({ context: DELETE, index: index });
   }
 
@@ -31,11 +36,15 @@ class CategoryDisplay extends Component{
       <div className={this.props.classes.content}>
         <div className={this.props.classes.toolbar} />
 
+        <ProductForm
+          onSubmitProduct={(props) => this.onSubmitProduct(props)}
+        />
+
         <MUIDataTable
           title={this.props.currentTable.text}
           columns={columns}
           data={this.props.currentTable.products} 
-          onDelete={(row) => this.onDelete(row)}
+          onDelete={(row) => this.onDeleteProduct(row)}
         />
 
       </div>
@@ -47,4 +56,4 @@ function mapStateToProps({ currentTable }) {
   return { currentTable };
 }
 
-export default connect(mapStateToProps, { showModal })(withStyles(styles)(CategoryDisplay));
+export default connect(mapStateToProps, { showModal, submitProduct })(withStyles(styles)(CategoryDisplay));

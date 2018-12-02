@@ -1,15 +1,26 @@
 import axios from 'axios';
-import { FETCH_TABLE, DELETE_PRODUCT, SHOW_MODAL, CLOSE_MODAL } from './types';
+import { reset } from 'redux-form';
+import { FETCH_TABLE, SUBMIT_PRODUCT, DELETE_PRODUCT, SHOW_MODAL, CLOSE_MODAL } from './types';
 
 export const fetchTable = ({ text, category }) => async dispatch => {
   const { data } = await axios.get('/api/products', { params: { category }});
   const products = data;
 
-  dispatch({ type: FETCH_TABLE, payload: {text, products}})
+  dispatch({ type: FETCH_TABLE, payload: {text, category, products}})
+}
+
+export const submitProduct = props => async dispatch => {
+  console.log(props);
+  const res = await axios.post('/api/product', props);
+
+  if(res.status === 200){
+    dispatch({ type: SUBMIT_PRODUCT, payload: res.data });
+    dispatch(reset('productForm'));
+  }
 }
 
 export const deleteProduct = ({ index, row }) => async dispatch => {
-  const res = await axios.delete(`/api/product`, {data: {id: row._id}});
+  const res = await axios.delete('/api/product', {data: {id: row._id}});
   
   if(res.status === 200){
     dispatch({ type: DELETE_PRODUCT, payload: index });
