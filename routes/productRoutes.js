@@ -49,7 +49,8 @@ module.exports = app => {
     .get(async (req, res) => {
       const products = await Product.find({
         category: req.query.category
-      });
+      })
+        .sort({ createdAt: 1 });
 
       res.send(products);
     })

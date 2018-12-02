@@ -12,11 +12,15 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 
-class DataTable extends Component{
+class MUIDataTable extends Component{
   constructor(props){
     super(props);
 
     this.state = { index: null };
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({ index: null });
   }
 
   renderTableTitle(){
@@ -98,7 +102,7 @@ class DataTable extends Component{
 
             {this.props.canDelete ? 
               <IconButton
-                onClick={() => this.props.onDelete(row)}
+                onClick={() => this.props.onDelete(index)}
               >
                 <DeleteIcon />
               </IconButton>
@@ -133,7 +137,7 @@ class DataTable extends Component{
   }
 }
 
-DataTable.defaultProps = {
+MUIDataTable.defaultProps = {
   columns: [],
   data: [],
   title: 'title',
@@ -143,7 +147,7 @@ DataTable.defaultProps = {
   onDelete: () => {}
 }
 
-DataTable.propTypes = {
+MUIDataTable.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     cell: PropTypes.string.isRequired,
@@ -157,4 +161,4 @@ DataTable.propTypes = {
   onDelete: PropTypes.func
 }
 
-export default DataTable;
+export default MUIDataTable;

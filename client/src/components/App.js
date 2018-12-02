@@ -7,7 +7,7 @@ import { fetchTable } from '../actions';
 
 import Header from './Header';
 import SideDrawer from './SideDrawer';
-import CategoryTable from './CategoryTable';
+import CategoryDisplay from './CategoryDisplay';
 import ModalConductor from './ModalConductor';
 
 const styles = theme => ({
@@ -27,7 +27,7 @@ class App extends Component {
         <div className={this.props.classes.root}>
           <Header />
           <SideDrawer categories={categories} />
-          <Route exact path='/' component={CategoryTable} />
+          <Route exact path='/' component={CategoryDisplay} />
           <ModalConductor />
         </div>
       </BrowserRouter>

@@ -10,7 +10,9 @@ import Button from '@material-ui/core/Button';
 
 const DeleteModal = props => {
   const deleteProduct = async () => {
-    await props.deleteProduct({ productID: props.currentModal.productID });
+    const { index } = props.currentModal;
+    
+    await props.deleteProduct({ index: index, row: props.currentTable.products[index] });
     props.closeModal();
   }
 
@@ -37,4 +39,8 @@ const DeleteModal = props => {
   )
 }
 
-export default connect(null, { deleteProduct })(DeleteModal);
+function mapStateToProps({ currentTable }) {
+  return { currentTable };
+}
+
+export default connect(mapStateToProps, { deleteProduct })(DeleteModal);
