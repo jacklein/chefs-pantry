@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -62,6 +63,28 @@ const MUIDataTableBody = props => {
       {renderTableBody(props)}
     </TableBody>
   )
+}
+
+MUIDataTableBody.defaultProps = {
+  columns: [],
+  data: [],
+  canEdit: true,
+  canDelete: true,
+  onSave: () => {},
+  onDelete: () => {}
+}
+
+MUIDataTableBody.propTypes = {
+  columns: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    cell: PropTypes.string.isRequired,
+    numeric: PropTypes.bool
+  })).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  canEdit: PropTypes.bool,
+  canDelete: PropTypes.bool,
+  onSave: PropTypes.func,
+  onDelete: PropTypes.func
 }
 
 export default MUIDataTableBody;

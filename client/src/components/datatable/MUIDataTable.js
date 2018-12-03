@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import Table from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -26,10 +26,19 @@ class MUIDataTable extends Component{
       <Paper>
         {this.renderTableTitle()}
         <Table>
-          <MUIDataTableHead {...this.props} />
+          <MUIDataTableHead 
+            columns={this.props.columns}
+            canEdit={this.props.canEdit}
+            canDelete={this.props.canDelete} 
+          />
+
           <MUIDataTableBody
+            columns={this.props.columns}
+            data={this.props.data}
+            canEdit={this.props.canEdit}
+            canDelete={this.props.canDelete}
             onEdit={(index) => this.props.onEdit(index)}
-            {...this.props}
+            onDelete={(index) => this.props.onDelete(index)}
           />
         </Table>
       </Paper>

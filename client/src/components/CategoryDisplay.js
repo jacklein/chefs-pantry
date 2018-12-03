@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
-import { DELETE_PRODUCT, EDIT_PRODUCT } from '../context';
+import { DELETE_PRODUCT, EDIT_PRODUCT } from './modals/context';
 import { showModal, submitProduct } from '../actions';
 
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import MUIDataTable from './datatable/MUIDataTable';
 import ProductForm from './products/ProductForm';
 
@@ -31,8 +31,8 @@ const columns = [{ title: 'Product', cell: 'name', numeric: false },
 
 class CategoryDisplay extends Component{
   
-  onSubmitProduct(props){
-    this.props.submitProduct({ category: this.props.currentTable.category, ...props });
+  onSubmitProduct(data){
+    this.props.submitProduct({ category: this.props.currentTable.category, ...data });
   }
 
   onEditProduct(index){
@@ -53,7 +53,7 @@ class CategoryDisplay extends Component{
             Add a new product
           </Typography>
           <ProductForm
-            onSubmitProduct={(props) => this.onSubmitProduct(props)}
+            onSubmitProduct={(data) => this.onSubmitProduct(data)}
             form="productForm"
           />
         </Paper>
@@ -64,6 +64,8 @@ class CategoryDisplay extends Component{
           data={this.props.currentTable.products} 
           onEdit={(index) => this.onEditProduct(index)}
           onDelete={(index) => this.onDeleteProduct(index)}
+          canEdit={true}
+          canDelete={true}
         />
 
       </div>

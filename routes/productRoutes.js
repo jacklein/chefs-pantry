@@ -4,7 +4,7 @@ const Product = mongoose.model('products');
 
 module.exports = app => {
   app.route('/api/product')
-    // await axios.post('/api/product', product)
+    // example: await axios.post('/api/product', data)
     .post(async (req, res) => {
       const { category, name, container, metric, count, notes } = req.body;
       
@@ -25,8 +25,8 @@ module.exports = app => {
       }
     })
 
+    // example: await axios.put('/api/product', data);
     .put(async (req, res) => {
-      console.log(req.body);
       Product.findOneAndUpdate(
         { _id: req.body._id },
         req.body,
@@ -38,7 +38,7 @@ module.exports = app => {
       )
     })
 
-    // await axios.delete(`/api/product`, {data: {id: '1234'}})
+    // example: await axios.delete(`/api/product`, {data: {id: '1234'}})
     .delete(async (req, res) => {
       const { id } = req.body;
 
@@ -58,7 +58,7 @@ module.exports = app => {
     });
 
   app.route('/api/products')
-    // await axios.get('/api/products', {params: {category: 'produce'}})
+    // example: await axios.get('/api/products', {params: {category: 'produce'}})
     .get(async (req, res) => {
       const products = await Product.find({
         category: req.query.category

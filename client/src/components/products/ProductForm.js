@@ -1,8 +1,9 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
+import _ from 'lodash';
+import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
-import Button from '@material-ui/core/Button';
 
+import Button from '@material-ui/core/Button';
 import ProductField from './ProductField';
 import formFields from './formFields';
 
@@ -59,5 +60,15 @@ ProductForm = reduxForm({
   enableReinitialize : true,
   validate
 })(ProductForm);
+
+ProductForm.defaultProps = {
+  onSubmitProduct: () => {},
+  form: 'form'
+}
+
+ProductForm.propTypes = {
+  onSubmitProduct: PropTypes.func,
+  form: PropTypes.string
+}
 
 export default ProductForm;

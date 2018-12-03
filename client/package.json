@@ -9,7 +9,6 @@
     "http-proxy-middleware": "^0.19.1",
     "immutability-helper": "^2.8.1",
     "lodash": "^4.17.11",
-    "mui-datatables": "^2.0.0-beta-41",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
@@ -17,7 +16,6 @@
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
     "redux-form": "^7.4.2",
-    "redux-form-material-ui": "^4.3.4",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {

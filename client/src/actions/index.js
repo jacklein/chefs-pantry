@@ -10,9 +10,8 @@ export const fetchTable = ({ text, category }) => async dispatch => {
   dispatch({ type: FETCH_TABLE, payload: {text, category, products}})
 }
 
-export const submitProduct = props => async dispatch => {
-  console.log(props);
-  const res = await axios.post('/api/product', props);
+export const submitProduct = data => async dispatch => {
+  const res = await axios.post('/api/product', data);
 
   if(res.status === 200){
     dispatch({ type: SUBMIT_PRODUCT, payload: res.data });

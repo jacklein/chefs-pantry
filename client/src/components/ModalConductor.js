@@ -1,5 +1,5 @@
 import React from 'react';
-import { DELETE_PRODUCT, EDIT_PRODUCT } from '../context';
+import { DELETE_PRODUCT, EDIT_PRODUCT } from './modals/context';
 import { closeModal } from '../actions'
 import { connect } from 'react-redux';
 

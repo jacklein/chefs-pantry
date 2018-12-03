@@ -10,7 +10,7 @@ const styles = theme => ({
   }
 })
 
-const Header = (props) => {
+const Header = props => {
   const { classes } = props;
   return (
     <div>
