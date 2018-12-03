@@ -1,5 +1,4 @@
 import React from 'react';
-import ProductForm from '../products/ProductForm'
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -11,26 +10,7 @@ const renderTableBody = props => {
   return(
     props.data.map((row, index) => {
       // render normal row
-      if(props.editIndex !== index){
-        return renderNormalRow(props, row, index);
-      }
-
-      // render edit product row
-      else{
-        return(
-          <TableRow key={row._id}>
-            <TableCell colSpan={6}>
-              <ProductForm 
-                onSubmitProduct={props.onEditComplete} 
-                form="editProductForm"
-                row={row}
-                index={index}
-                initialValues={row}
-              />
-            </TableCell>
-          </TableRow>
-        )
-      }
+      return renderNormalRow(props, row, index);
     })
   );
 }

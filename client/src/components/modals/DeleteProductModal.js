@@ -8,11 +8,11 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Button from '@material-ui/core/Button';
 
-const DeleteModal = props => {
+const DeleteProductModal = props => {
   const deleteProduct = async () => {
     const { index } = props.currentModal;
     
-    await props.deleteProduct({ index: index, row: props.currentTable.products[index] });
+    await props.deleteProduct({ index: index, data: props.currentTable.products[index] });
     props.closeModal();
   }
 
@@ -39,8 +39,4 @@ const DeleteModal = props => {
   )
 }
 
-function mapStateToProps({ currentTable }) {
-  return { currentTable };
-}
-
-export default connect(mapStateToProps, { deleteProduct })(DeleteModal);
+export default connect(null, { deleteProduct })(DeleteProductModal);

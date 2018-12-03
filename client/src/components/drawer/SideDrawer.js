@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
@@ -39,7 +40,7 @@ const SideDrawer = (props) => {
       </List>
       <Divider />
       <List>
-        {props.categories.map((category, index) => (
+        {_.map(props.categories, category => (
           <ListItem 
             button 
             key={category.category}

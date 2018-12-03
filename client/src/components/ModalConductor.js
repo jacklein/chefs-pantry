@@ -1,21 +1,24 @@
 import React from 'react';
-import { DELETE } from '../context';
+import { DELETE_PRODUCT, EDIT_PRODUCT } from '../context';
 import { closeModal } from '../actions'
 import { connect } from 'react-redux';
 
-import DeleteModal from './modals/DeleteModal';
+import DeleteProductModal from './modals/DeleteProductModal';
+import EditProductModal from './modals/EditProductModal';
 
 const ModalConductor = props => {
   switch(props.currentModal.context){
-    case DELETE:
-      return <DeleteModal {...props} />
+    case DELETE_PRODUCT:
+      return <DeleteProductModal {...props} />
+    case EDIT_PRODUCT:
+      return <EditProductModal {...props} />
     default:
       return null;
   }
 }
 
-function mapStateToProps({ currentModal }) {
-  return { currentModal };
+function mapStateToProps({ currentModal, currentTable }) {
+  return { currentModal, currentTable };
 }
 
 export default connect(mapStateToProps, { closeModal })(ModalConductor);

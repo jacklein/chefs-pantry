@@ -9,17 +9,6 @@ import MUIDataTableHead from './MUIDataTableHead';
 import MUIDataTableBody from './MUIDataTableBody'
 
 class MUIDataTable extends Component{
-  constructor(props){
-    super(props);
-
-    this.state = { index: null };
-  }
-
-  componentWillReceiveProps(nextProps){
-    console.log('recieivn props');
-    this.setState({ index: null });
-  }
-
   renderTableTitle(){
     return(
       <Toolbar>
@@ -32,24 +21,14 @@ class MUIDataTable extends Component{
     )
   }
 
-  onEdit(index){
-    this.setState({ index });
-  }
-
-  onEditComplete(props){
-    console.log(props);
-  }
-
   render(){
     return(
       <Paper>
         {this.renderTableTitle()}
         <Table>
           <MUIDataTableHead {...this.props} />
-          <MUIDataTableBody 
-            editIndex={this.state.index}
-            onEdit={(index) => this.onEdit(index)}
-            onEditComplete={(props) => this.onEditComplete(props)}
+          <MUIDataTableBody
+            onEdit={(index) => this.props.onEdit(index)}
             {...this.props}
           />
         </Table>

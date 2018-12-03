@@ -1,6 +1,4 @@
 import _ from 'lodash';
-import { connect } from 'react-redux';
-import { resetForm } from '../../actions'
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import Button from '@material-ui/core/Button';
@@ -31,7 +29,7 @@ class ProductForm extends Component {
           <div style={{display:'flex'}}>
             {this.renderFields()}
           </div>
-          <Button type="submit" style={{paddingLeft: '0'}}>
+          <Button type="submit" style={{marginLeft: '-16px'}}>
             Save
           </Button>
         </form>

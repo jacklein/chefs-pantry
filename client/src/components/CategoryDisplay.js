@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
-import { DELETE } from '../context';
+import { DELETE_PRODUCT, EDIT_PRODUCT } from '../context';
 import { showModal, submitProduct } from '../actions';
 
 import MUIDataTable from './datatable/MUIDataTable';
@@ -35,12 +35,15 @@ class CategoryDisplay extends Component{
     this.props.submitProduct({ category: this.props.currentTable.category, ...props });
   }
 
+  onEditProduct(index){
+    this.props.showModal({ context: EDIT_PRODUCT, index: index });
+  }
+
   onDeleteProduct(index){
-    this.props.showModal({ context: DELETE, index: index });
+    this.props.showModal({ context: DELETE_PRODUCT, index: index });
   }
 
   render(){
-    console.log(this.props.currentTable);
     return (
       <div className={this.props.classes.content}>
         <div className={this.props.classes.toolbar} />
@@ -59,7 +62,8 @@ class CategoryDisplay extends Component{
           title={this.props.currentTable.text}
           columns={columns}
           data={this.props.currentTable.products} 
-          onDelete={(row) => this.onDeleteProduct(row)}
+          onEdit={(index) => this.onEditProduct(index)}
+          onDelete={(index) => this.onDeleteProduct(index)}
         />
 
       </div>
