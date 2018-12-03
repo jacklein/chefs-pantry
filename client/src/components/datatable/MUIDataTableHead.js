@@ -1,12 +1,14 @@
 import React from 'react';
+import _ from 'lodash';
 import PropTypes from 'prop-types'
+
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 const renderTableHead = props => {
   return(
-    props.columns.map(column => {
+    _.map(props.columns, column => {
       return (
         <TableCell 
           key={column.title}

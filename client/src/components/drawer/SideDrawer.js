@@ -35,12 +35,7 @@ const SideDrawer = props => {
       }}
     >
       <div className={classes.toolbar} />
-      <List>
-        <ListItem button> 
-          <ListItemText primary={'View All'} />
-        </ListItem>
-      </List>
-      <Divider />
+
       <List>
         {_.map(props.categories, category => (
           <ListItem 
@@ -52,6 +47,7 @@ const SideDrawer = props => {
           </ListItem>
         ))}
       </List>
+      
     </Drawer>
   );
 }

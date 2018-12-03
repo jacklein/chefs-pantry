@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import Table from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-
 import MUIDataTableHead from './MUIDataTableHead';
 import MUIDataTableBody from './MUIDataTableBody'
 

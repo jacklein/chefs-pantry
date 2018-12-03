@@ -20,9 +20,9 @@ const ProductField = ({ input, label, placeholder, meta: { error, touched }, cla
         margin="normal"
         {...input}
       />
-      <div style={{ marginBottom: '20px' }}>
-        { touched && error }
-      </div>
+        <p style={{ marginBottom: '20px', color:'red' }}> 
+          { touched && error } 
+        </p>
     </div>
   );
 };

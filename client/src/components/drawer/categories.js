@@ -4,6 +4,7 @@ const categories = [
   { text: 'Produce', category: constants.PRODUCE},
   { text: 'Meat', category: constants.MEAT},
   { text: 'Seafood', category: constants.SEAFOOD},
+  { text: 'Dairy', category: constants.DAIRY},
   { text: 'Beverages', category: constants.BEVERAGES},
   { text: 'Frozen', category: constants.FROZEN},
   { text: 'Rice, Grains, Pasta, and Beans', category: constants.RICE_GRAINS_PASTA_BEANS},

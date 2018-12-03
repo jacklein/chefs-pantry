@@ -1,5 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import _ from 'lodash';
+import PropTypes from 'prop-types';
+
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -9,7 +11,7 @@ import EditIcon from '@material-ui/icons/Edit';
 
 const renderTableBody = props => {
   return(
-    props.data.map((row, index) => {
+    _.map(props.data, (row, index) => {
       // render normal row
       return renderNormalRow(props, row, index);
     })
@@ -19,7 +21,7 @@ const renderTableBody = props => {
 const renderNormalRow = (props, row, index) => {
   return (
     <TableRow key={row._id}>
-      {props.columns.map(column => {
+      {_.map(props.columns, column => {
         return(
           <TableCell key={column.cell} numeric={column.numeric}>
             {row[column.cell]}
@@ -36,20 +38,16 @@ const renderActionButtons = (props, index) => {
     return(
       <TableCell>
         <div style={{display: 'flex'}}>
-          {props.canEdit ? 
-            <IconButton
-              onClick={() => props.onEdit(index)}
-            >
-              <EditIcon />
-            </IconButton> 
+          {props.canEdit
+            ? <IconButton onClick={() => props.onEdit(index)}>
+                <EditIcon />
+              </IconButton> 
             : null}
 
-          {props.canDelete ? 
-            <IconButton
-              onClick={() => props.onDelete(index)}
-            >
-              <DeleteIcon />
-            </IconButton>
+          {props.canDelete
+            ? <IconButton onClick={() => props.onDelete(index)} >
+                <DeleteIcon />
+              </IconButton>
             : null}
         </div>
       </TableCell>
