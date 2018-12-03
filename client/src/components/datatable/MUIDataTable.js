@@ -16,7 +16,7 @@ class MUIDataTable extends Component{
   }
 
   componentWillReceiveProps(nextProps){
-    console.log('recieivn props');
+    console.log('receiving props');
     this.setState({ index: null });
   }
 
