@@ -6,7 +6,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { fetchTable } from '../actions';
+import { fetchTable } from '../../actions';
 
 const drawerWidth = 240;
 

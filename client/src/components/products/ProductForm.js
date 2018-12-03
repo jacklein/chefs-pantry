@@ -1,4 +1,6 @@
 import _ from 'lodash';
+import { connect } from 'react-redux';
+import { resetForm } from '../../actions'
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import Button from '@material-ui/core/Button';
@@ -8,13 +10,14 @@ import formFields from './formFields';
 
 class ProductForm extends Component {
   renderFields() {
-    return _.map(formFields, ({ label, name, type }) => {
+    return _.map(formFields, ({ label, name, type, placeholder }) => {
       return (
         <Field
           key={name}
           component={ProductField}
           type={type}
           label={label}
+          placeholder={placeholder}
           name={name}
         />
       );
@@ -28,7 +31,7 @@ class ProductForm extends Component {
           <div style={{display:'flex'}}>
             {this.renderFields()}
           </div>
-          <Button type="submit">
+          <Button type="submit" style={{paddingLeft: '0'}}>
             Save
           </Button>
         </form>
@@ -40,7 +43,7 @@ class ProductForm extends Component {
 function validate(values) {
   const errors = {};
 
-  _.each(formFields, ({ name, type, required }) => {
+  _.each(formFields, ({ name, required }) => {
     if(!values[name] && required) {
       errors[name] = 'You must provide a value';
     }
@@ -54,7 +57,9 @@ function validate(values) {
   return errors;
 }
 
-export default reduxForm({
-  validate,
-  form: 'productForm',
+ProductForm = reduxForm({
+  enableReinitialize : true,
+  validate
 })(ProductForm);
+
+export default ProductForm;

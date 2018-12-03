@@ -1,13 +1,30 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core';
 
-export default ({ input, label, meta: { error, touched } }) => {
+const styles = theme => ({
+  textField: {
+    marginRight: theme.spacing.unit,
+  }
+})
+
+const ProductField = ({ input, label, placeholder, meta: { error, touched }, classes }) => {
   return (
-    <div className={input.name}>
-      <label>{label}</label>
-      <input {...input} style={{ marginBottom: '5px' }}/>
+    <div>
+      <TextField
+        id="standard-textarea"
+        label={label}
+        placeholder={placeholder}
+        multiline
+        className={classes.textField}
+        margin="normal"
+        {...input}
+      />
       <div style={{ marginBottom: '20px' }}>
         { touched && error }
       </div>
     </div>
   );
 };
+
+export default withStyles(styles)(ProductField);

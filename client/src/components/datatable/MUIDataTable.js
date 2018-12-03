@@ -16,6 +16,7 @@ class MUIDataTable extends Component{
   }
 
   componentWillReceiveProps(nextProps){
+    console.log('recieivn props');
     this.setState({ index: null });
   }
 
@@ -23,7 +24,7 @@ class MUIDataTable extends Component{
     return(
       <Toolbar>
         <div>
-          <Typography>
+          <Typography variant="h5">
             {this.props.title}
           </Typography>
         </div>
@@ -32,8 +33,11 @@ class MUIDataTable extends Component{
   }
 
   onEdit(index){
-    console.log(index);
-    //this.setState({ index })
+    this.setState({ index });
+  }
+
+  onEditComplete(props){
+    console.log(props);
   }
 
   render(){
@@ -45,6 +49,7 @@ class MUIDataTable extends Component{
           <MUIDataTableBody 
             editIndex={this.state.index}
             onEdit={(index) => this.onEdit(index)}
+            onEditComplete={(props) => this.onEditComplete(props)}
             {...this.props}
           />
         </Table>

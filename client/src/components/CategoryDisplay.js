@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import { DELETE } from '../context';
 import { showModal, submitProduct } from '../actions';
+
 import MUIDataTable from './datatable/MUIDataTable';
 import ProductForm from './products/ProductForm';
 
@@ -11,7 +14,13 @@ const styles = theme => ({
     flexGrow: 1,
     padding: theme.spacing.unit * 3
   },
-  toolbar: theme.mixins.toolbar
+  toolbar: theme.mixins.toolbar,
+  root: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: '30px'
+  },
 })
 
 const columns = [{ title: 'Product', cell: 'name', numeric: false },
@@ -36,9 +45,15 @@ class CategoryDisplay extends Component{
       <div className={this.props.classes.content}>
         <div className={this.props.classes.toolbar} />
 
-        <ProductForm
-          onSubmitProduct={(props) => this.onSubmitProduct(props)}
-        />
+        <Paper className={this.props.classes.root}>
+          <Typography variant="h5">
+            Add a new product
+          </Typography>
+          <ProductForm
+            onSubmitProduct={(props) => this.onSubmitProduct(props)}
+            form="productForm"
+          />
+        </Paper>
 
         <MUIDataTable
           title={this.props.currentTable.text}

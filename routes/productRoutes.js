@@ -25,22 +25,35 @@ module.exports = app => {
       }
     })
 
+    .put(async (req, res) => {
+      console.log(req.body);
+      Product.findOneAndUpdate(
+        { _id: req.body._id },
+        req.body,
+        { new: true },
+        (err, product) => {
+          if (err) return res.status(500).send(err);
+          return res.send(product);
+        }
+      )
+    })
+
     // await axios.delete(`/api/product`, {data: {id: '1234'}})
     .delete(async (req, res) => {
       const { id } = req.body;
 
-      Product.findOneAndDelete({
-        _id: id
-      }, (err, deletedProduct) => {
-        if(err) return res.status(500).send(err);
-        
-        if(!deletedProduct) return res.status(404).send('file does not exist');
+      Product.findOneAndDelete(
+        { _id: id },
+        (err, deletedProduct) => {
+          if(err) return res.status(500).send(err);
+          
+          if(!deletedProduct) return res.status(404).send('file does not exist');
 
-        const response = {
-          message: 'Product successfully deleted',
-          id: deletedProduct._id
-        };
-        return res.status(200).send(response);
+          const response = {
+            message: 'Product successfully deleted',
+            id: deletedProduct._id
+          };
+          return res.status(200).send(response);
       });
     });
 

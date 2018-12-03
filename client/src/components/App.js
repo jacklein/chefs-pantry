@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import categories from '../categories';
+import categories from './drawer/categories';
 import { connect } from 'react-redux';
 import { fetchTable } from '../actions';
 
 import Header from './Header';
-import SideDrawer from './SideDrawer';
+import SideDrawer from './drawer/SideDrawer';
 import CategoryDisplay from './CategoryDisplay';
 import ModalConductor from './ModalConductor';
 
