@@ -10,13 +10,13 @@ const styles = theme => ({
 
 const ProductField = ({ input, label, placeholder, meta: { error, touched }, classes }) => {
   return (
-    <div>
+    <div className={label}>
       <TextField
-        id="standard-textarea"
+        id={label}
         label={label}
         placeholder={placeholder}
         multiline
-        className={classes.textField}
+        className={classes.textsField}
         margin="normal"
         {...input}
       />

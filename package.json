@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Test app for La Belle Assiette",
   "main": "index.js",
+  "jest": {
+    "setupTestFrameworkScriptFile": "./tests/setup.js"
+  },
   "engines": {
     "node": "10.8.0",
     "npm": "6.4.1"
@@ -12,14 +15,17 @@
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "test": "jest"
   },
   "author": "Jack Klein",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "mongoose": "^5.3.14"
+    "jest": "^23.6.0",
+    "mongoose": "^5.3.14",
+    "puppeteer": "^1.11.0"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",

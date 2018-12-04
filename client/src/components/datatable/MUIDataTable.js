@@ -12,7 +12,7 @@ class MUIDataTable extends Component{
   renderTableTitle(){
     return(
       <Toolbar>
-        <div>
+        <div id="table-label">
           <Typography variant="h5">
             {this.props.title}
           </Typography>

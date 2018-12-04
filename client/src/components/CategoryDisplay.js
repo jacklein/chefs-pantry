@@ -49,9 +49,11 @@ class CategoryDisplay extends Component{
         <div className={this.props.classes.toolbar} />
 
         <Paper className={this.props.classes.root}>
-          <Typography variant="h5">
-            Add a new product
-          </Typography>
+          <div id="new-product-label">
+            <Typography variant="h5">
+              Add a new product
+            </Typography>
+          </div>
           <ProductForm
             onSubmitProduct={(data) => this.onSubmitProduct(data)}
             form="productForm"
