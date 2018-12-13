@@ -1,6 +1,6 @@
 # chefs-pantry
 
-Live demo at: https://shielded-mountain-95657.herokuapp.com/
+Live demo at: https://shielded-mountain-95657.herokuapp.com/ (heroku will take a minute or two to load)
 
 To run locally, execute `npm run dev` on the command line from the root directory
 
